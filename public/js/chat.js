@@ -133,7 +133,7 @@ function ($scope, $routeParams, config, angularLoad, ModalService, $window, $doc
 			password = credentials.password;
 
 			$scope.chatlog.push({
-				text: "Joining room <a href='" + config.url + "/" 
+				text: "Joining room <a href='" + config.url + 
 						+ credentials.room + "'>" + credentials.room + "</a>",
 				date_sent: new Date()
 			});

@@ -1,7 +1,7 @@
 angular.module("freedom2", ["ngRoute", "ngSanitize", "angularModalService", 
 				"freedom2.content", "freedom2.disclose", "freedom2.chat"])
 .constant('config', {
-	url : 'http://localhost:3000/'
+	url : location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '')+'/'
 })
 .config(['$routeProvider', '$locationProvider',
 	function($routeProvider, $locationProvider) {
