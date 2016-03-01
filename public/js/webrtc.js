@@ -16,11 +16,23 @@
 var WebRTC = function(sharedKey, password, messageCallback) {
 
 	var sendMessage = function(text) {
+		if (!dataChannel) return false;
 		dataChannel.send(JSON.stringify({
 			sender: id,
 			text: text,
 			date_sent: new Date()
 		}));
+		return true;
+	}
+
+	var sendSystemMessage = function(command, text) {
+		if (!dataChannel) return false;
+		dataChannel.send(JSON.stringify({
+			command: command,
+			text: text,
+			date_sent: new Date()
+		}));
+		return true;
 	}
 
 	// Announce our arrival to the announcement channel
@@ -151,7 +163,7 @@ var WebRTC = function(sharedKey, password, messageCallback) {
 	// This is called when the WebRTC sending data channel is offically 'open'
 	var handleDataChannelOpen = function() {
 		// all channels open
-		//@todo -send system message
+		sendSystemMessage("announce", id);
 	};
 
 	// Called when the data channel has closed

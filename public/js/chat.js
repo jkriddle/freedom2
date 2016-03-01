@@ -86,20 +86,31 @@ function ($scope, $routeParams, $element, close) {
 }]);
 
 
-ctrl.controller('chat.home', ['$scope', '$routeParams', 'angularLoad', 'ModalService', '$window', '$document',
-function ($scope, $routeParams, angularLoad, ModalService, $window, $document) {
+ctrl.controller('chat.home', ['$scope', '$routeParams', 'config', 'angularLoad', 'ModalService', '$window', '$document',
+function ($scope, $routeParams, config, angularLoad, ModalService, $window, $document) {
 	$scope.chatlog = [];
 	var rtc = null;
 	var password = null;
 
 	$scope.sendMessage = function() {
-		rtc.sendMessage(CryptoJS.AES.encrypt($scope.messageText, password).toString());
+		var status = 'sent';
+		if (!rtc.sendMessage(CryptoJS.AES.encrypt($scope.messageText, password).toString())) {
+			status = 'failed';
+		}
 
 		$scope.chatlog.push({
 			sender : "Me",
 			text: $scope.messageText,
-			date_sent: new Date()
+			date_sent: new Date(),
+			status: status
 		});
+
+		if (status == 'failed') {
+			$scope.chatlog.push({
+				text: "Unable to send message. There may not be any other participants yet.",
+				date_sent: new Date()
+			});
+		}
 
 		$scope.messageText = "";
 		setTimeout(function() {
@@ -120,15 +131,30 @@ function ($scope, $routeParams, angularLoad, ModalService, $window, $document) {
 		modal.element.modal();
 		modal.close.then(function(credentials) {
 			password = credentials.password;
+
+			$scope.chatlog.push({
+				text: "Joining room <a href='" + config.url + "/" 
+						+ credentials.room + "'>" + credentials.room + "</a>",
+				date_sent: new Date()
+			});
+
 			angularLoad.loadScript('https://cdn.firebase.com/v0/firebase.js').then(function() {
 				angularLoad.loadScript('/js/webrtc.js').then(function() {
 					rtc = new WebRTC(credentials.room, credentials.password, function(event) {
 						var packet = JSON.parse(event.data);
+
+						if (packet.command) {
+							$scope.chatlog.push({
+								text : packet.text + " has joined the room.",
+								date_sent: new Date()
+							});
+							 $scope.$apply();
+							 return;
+						}
 						packet.text = CryptoJS.AES.decrypt(packet.text, password).toString(CryptoJS.enc.Utf8);
 						if (!packet.text) {
 							//@todo - send sytem notification
 							$scope.chatlog.push({
-								sender : "[SYSTEM]",
 								text : "Unable to decrypt message from " + packet.sender + ". " 
 										+ "They may have typed in the wrong password for this room.",
 								date_sent: new Date()
