@@ -7,7 +7,7 @@ angular.module('freedom2.chat', ['ngRoute', 'angularModalService', 'angularLoad'
 		templateUrl: 'partials/chat/index.html',
 		controller: 'chat.home'
 	})
-	.when('/c/{room:.*}', {
+	.when('/c/:room*', {
 		templateUrl: 'partials/chat/index.html',
 		controller: 'chat.home'
 	});
@@ -61,8 +61,10 @@ function generateRoomName() {
 
 var ctrl = angular.module('freedom2.chat.controllers', []);
 
-ctrl.controller('chat.join.modal', ['$scope', '$element', 'close',
-function ($scope, $element, close) {
+ctrl.controller('chat.join.modal', ['$scope', '$routeParams', '$element', 'close',
+function ($scope, $routeParams, $element, close) {
+
+	$scope.room = $routeParams.room;
 
 	$scope.newRoom = function() {
 		$scope.room = generateRoomName();
@@ -84,8 +86,8 @@ function ($scope, $element, close) {
 }]);
 
 
-ctrl.controller('chat.home', ['$scope', 'angularLoad', 'ModalService', '$window', '$document',
-function ($scope, angularLoad, ModalService, $window, $document) {
+ctrl.controller('chat.home', ['$scope', '$routeParams', 'angularLoad', 'ModalService', '$window', '$document',
+function ($scope, $routeParams, angularLoad, ModalService, $window, $document) {
 	$scope.chatlog = [];
 	var rtc = null;
 	var password = null;
