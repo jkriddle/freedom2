@@ -1,0 +1,17 @@
+.btn-primary {
+	color: #fff;
+	background-color: #ff0404;
+	border-color: #F10443;
+}
+
+.btn-primary:hover {
+	background-color: #FF2E2E;
+	border-color: #DC2C2C;
+}
+
+.margin-top-5 { margin-top: 0.5em; }
+.margin-top-10 { margin-top: 1.0em; }
+.margin-top-15 { margin-top: 1.5em; }
+.margin-top-20 { margin-top: 2.0em; }
+.margin-top-25 { margin-top: 2.5em; }
+.margin-top-30 { margin-top: 3.0em; }

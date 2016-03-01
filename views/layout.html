@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Freedom2</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<script src="/bower_components/jquery/dist/jquery.js"></script>
+	<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-route/angular-route.js"></script>
+	<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+	<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="/bower_components/angular-modal-service/dst/angular-modal-service.js"></script> 
+	<script src="/bower_components/clipboard/dist/clipboard.js"></script> 
+	<script src="/bower_components/ngclipboard/dist/ngclipboard.js"></script> 
+	<script src="/bower_components/lz-string/libs/lz-string.js"></script>
+	<script src="/bower_components/crypto-js/crypto-js.js"></script>
+	<script src="/js/disclose.js"></script>
+	<script src="/js/chat.js"></script>
+	<script src="/js/app.js"></script>
+</head>
+<body ng-app="freedom2">
+	<base href="/">
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand">
+					<a href="/">
+						Freedom2
+					</a>
+				</li>
+				<li>
+					<a active-link="active" href="d">Disclose</a>
+				</li>
+				<li>
+					<a active-link="active" href="c">Chat</a>
+				</li>
+				<li>
+					<a active-link="active" href="s">Share</a>
+				</li>
+			</ul>
+
+			<ul class="sidebar-nav sidebar-nav-bottom">
+				<li class="donate">
+					<a href="donate"><img src="/img/bitcoin-icon.png" alt="" /> Donate</a>
+				</li>
+			</ul>
+
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				{{{ yield }}}
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Menu Toggle Script -->
+	<script>
+	$("#menu-toggle").click(function(e) {
+		e.preventDefault();
+		$("#wrapper").toggleClass("toggled");
+	});
+	</script>
+</body>
+</html>

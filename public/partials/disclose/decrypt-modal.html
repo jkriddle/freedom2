@@ -1,0 +1,27 @@
+<div class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Decrypt Message</h4>
+			</div>
+			<div class="modal-body">
+				<p>Enter the password to view this message.</p>
+
+				<div class="alert alert-danger" ng-show="modal_error">
+					{{modal_error}}
+				</div>
+
+				<form class="form" ng-submit="encrypt(true)">
+					<div class="form-group">
+						<input class="form-control" type="password" ng-model="password" placeholder="Password" />
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="submit" ng-click="encrypt(true)" class="btn btn-primary">Decrypt</button>
+			</div>
+		</div>
+	</div>
+</div>
