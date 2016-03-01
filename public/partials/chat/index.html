@@ -1,7 +1,32 @@
-<div class="row">
-    <div class="col-lg-12">
-        <h1>Chat</h1>
 
+	<div class="chat-wrapper">
 
-    </div>
-</div>
+		<h1>Chat</h1>
+
+		<div class="container-fluid">
+			<div class="chat-log">
+				<div class="row" ng-repeat="message in chatlog">
+					<span class="sender">{{message.sender}}</span>
+					<span class="text">{{message.text}}</span>
+					<span class="date-sent">{{message.date_sent | date:'@ h:mma'}}</span>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="chat-controls-wrapper">
+			<div class="chat-controls">
+				<form class="row">
+					<div class="col-lg-12">
+						<div class="input-group">
+			    			<input ng-model="messageText" type="text" class="form-control" />
+							<span class="input-group-btn">
+				    			<button ng-click="sendMessage()" type="submit" class="btn btn-primary">Send</button>
+							</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>

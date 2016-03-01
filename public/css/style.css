@@ -4,8 +4,6 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-/* Toggle Styles */
-
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -188,3 +186,53 @@
         font-size:1.6em;
         padding:0 20px;
     }
+
+
+/***************************
+ * CHAT
+ ***************************/
+.chat-wrapper {
+    position:relative;
+    width:100%;
+}
+
+.chat-log {
+    display: block;
+    margin-bottom:60px;
+    width:100%;
+}
+    .chat-log .sender {
+        font-weight:bold;
+    }
+
+    .chat-log .text {
+    }
+
+    .chat-log .date-sent {
+        color:#ccc;
+        clear:both;
+        display:block;
+        font-size:0.8em;
+        text-align:right;
+    }
+
+.chat-controls-wrapper {
+    background: #fff;
+    border-top:1px solid #ccc;
+    bottom:0px;
+    padding-top:20px;
+    padding-bottom:20px;
+    position:fixed;
+    width:100%;
+}
+
+    .chat-controls {
+        display:block;
+        width:50%;
+    }
+
+    .form-group .chat-controls input {
+        width:600px;
+    }
+
+

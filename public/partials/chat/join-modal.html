@@ -1,0 +1,30 @@
+<div class="modal fade">
+	<div class="modal-dialog">
+		<form class="modal-content" ng-submit="encrypt(true)">
+			<div class="modal-header">
+				<button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Join Room</h4>
+			</div>
+			<div class="modal-body">
+				<p>Enter a room name and a password to join the conversation.</p>
+
+				<div class="alert alert-danger" ng-show="modal_error">
+					{{modal_error}}
+				</div>
+			
+				<div class="form form-inline">
+						<input class="room-control form-control" type="text" ng-model="room" placeholder="Room name" /> 
+						<button type="button" class="btn btn-default" ng-click="newRoom()">New Room</button>
+				</div>
+
+				<div class="form-group margin-top-5">
+					<input class="form-control" type="password" ng-model="password" placeholder="Password" />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="submit" ng-click="join(true)" class="btn btn-primary">Join</button>
+			</div>
+		</form>
+	</div>
+</div>

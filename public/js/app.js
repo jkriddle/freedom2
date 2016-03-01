@@ -1,4 +1,5 @@
-angular.module("freedom2", ["ngRoute", "angularModalService", "freedom2.content", "freedom2.disclose", "freedom2.chat"])
+angular.module("freedom2", ["ngRoute", "ngSanitize", "angularModalService", 
+				"freedom2.content", "freedom2.disclose", "freedom2.chat"])
 .constant('config', {
 	url : 'http://localhost:3000/'
 })

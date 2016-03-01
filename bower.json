@@ -24,6 +24,8 @@
     "lz-string": "^1.4.4",
     "angular-bootstrap": "^1.2.1",
     "ngclipboard": "^1.1.1",
-    "clipboard": "^1.5.9"
+    "clipboard": "^1.5.9",
+    "angular-load": "^0.4.1",
+    "angular-sanitize": "^1.5.0"
   }
 }
