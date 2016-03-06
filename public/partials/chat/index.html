@@ -3,16 +3,14 @@
 
 		<h1>Chat</h1>
 
-		<div class="container-fluid">
-			<div class="chat-log">
-				<div class="row {{message.status}}" ng-repeat="message in chatlog">
-					<div class="col-md-10">
-						<span class="sender">{{message.sender}}</span>
-						<span ng-bind-html="message.text"></span>
-					</div>
-					<div class="col-md-2">
-						<span class="date-sent">{{message.date_sent | date:'@ h:mma'}}</span>
-					</div>
+		<div class="chat-log">
+			<div class="row {{message.status}}" ng-repeat="message in chatlog">
+				<div class="col-md-10">
+					<span class="sender">{{message.sender}}</span>
+					<span ng-bind-html="message.text"></span>
+				</div>
+				<div class="col-md-2">
+					<span class="date-sent">{{message.date_sent | date:'@ h:mma'}}</span>
 				</div>
 			</div>
 		</div>

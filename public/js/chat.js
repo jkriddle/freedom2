@@ -119,8 +119,6 @@ function ($scope, $routeParams, config, angularLoad, ModalService, $window, $doc
 	}
 
 	function apply() {
-		console.log("APPLYING");
-		console.log($scope.chatlog);
 		setTimeout(function() { $scope.$apply(); } , 100);
 	}
 
@@ -132,9 +130,9 @@ function ($scope, $routeParams, config, angularLoad, ModalService, $window, $doc
 		modal.close.then(function(credentials) {
 			password = credentials.password;
 
+			$scope.room_url = config.url + 'c/' + credentials.room;
 			$scope.chatlog.push({
-				text: "Joining room <a href='" + config.url + 
-						+ credentials.room + "'>" + credentials.room + "</a>",
+				text: "Joining room <a href='" + $scope.room_url + "'>" + credentials.room + "</a>",
 				date_sent: new Date()
 			});
 
